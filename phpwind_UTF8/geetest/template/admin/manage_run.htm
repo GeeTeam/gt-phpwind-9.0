@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<div class="nav">
+		<ul class="cc">
+			<li class="current"><a href="{@WindUrlHelper::createUrl('app/geetest/manage/run')}">基础设置</a></li>
+		</ul>
+	</div>
+	<div class="h_a">基础设置</div>
+	<form class="J_ajaxForm" data-role="list" action="{@url:app/geetest/manage/dorun}" method="post">
+  	<div class="table_full">
+  		<table width="100%">
+  			<colgroup>
+				<col class="th" />
+				<col width="400" />
+				<col />
+			</colgroup>
+			<tbody>
+	    		<tr>
+	      			<th>验证码公钥</th>
+	      			<td><input class="input length_5" type="text" name="publickey" value="{$config['publickey']}" autocomplete="off" disableautocomplete /></td>
+		  			<td><div class="fun_tips">请到 <a href="http://my.geetest.com" target= "_blank">my.geetest.com</a> 注册，申请公钥和私钥</div></td>
+	    		</tr>
+				<tr>
+	      			<th>验证码私钥</th>
+	      			<td><input class="input length_5" type="text" name="privatekey" value="{$config['privatekey']}"  autocomplete="off" disableautocomplete /></td>
+		  			<td><div class="fun_tips"></div></td>
+	    		</tr>
+	    		<tr>
+	      			<th>是否开启验证</th>
+	      			<td>
+	      				<ul class="switch_list cc">
+	            			<li><label><input type="radio" name="open"  value="1" {@Pw::ifcheck($config['open'] == 1)}><span>开启</span></label></li>
+	            			<li><label><input type="radio" name="open"  value="0" {@Pw::ifcheck($config['open'] == 0)}><span>关闭</span></label></li>
+	          			</ul>
+					</td>
+		  			<td><div class="fun_tips"></div></td>
+	    		</tr>
+	    		<tr>
+					<th>启用模块</th>
+					<td>
+						<ul class="double_list cc">					
+							<li><label><input type="checkbox" name="model[]"  {@Pw::ifcheck(in_array('register', $config['model']))} value="register"><span>注册</span></label></li>				
+							<li><label><input type="checkbox" name="model[]" {@Pw::ifcheck(in_array('login', $config['model']))} value="login"><span>登陆</span></label></li>
+							<li><label><input type="checkbox" name="model[]"  {@Pw::ifcheck(in_array('run', $config['model']))} value="run"><span>发帖</span></label></li>
+							<li><label><input type="checkbox" name="model[]"  {@Pw::ifcheck(in_array('reply', $config['model']))} value="reply"><span>回复</span></label></li>
+							<li><label><input type="checkbox" name="model[]"  {@Pw::ifcheck(in_array('modify', $config['model']))} value="modify"><span>编辑</span></label></li>
+							<li style="display:none"><label><input type="checkbox" name="model[]" checked="checked" value="__other__"><span></span></label></li>
+						</ul>
+					</td>
+					<td><div class="fun_tips" style="cursor:default;">
+							选择启用验证码的模块，可多选
+					</div></td>
+				</tr>
+
+			</tbody>
+  		</table>
+  	</div>
+	<div class="">
+		<div class="btn_wrap_pd">
+			<button class="btn btn_submit J_ajax_submit_btn" type="submit" >提交</button>
+		</div>
+	</div>
+	</form>
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

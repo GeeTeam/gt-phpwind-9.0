@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+	<application>
+		<name>极验验证码</name>                  
+		<alias>geetest</alias>
+		<version>1.0</version>	 
+		<pw-version>9.0</pw-version>       
+		<description>极验验证码</description>   
+		<logo>images/geetest.png</logo>		
+		<type>app</type>					
+		<charset>UTF-8</charset>		 
+		<website>www.geetest.com</website>	 
+		<author-name>Break</author-name>		     
+		<author-email>877077145@qq.com</author-email>		  	
+		<author-icon>your icon</author-icon>	         
+	</application>
+
+	<res>res</res>
+
+	<installation-service></installation-service>
+	<inject-services>
+
+<s_footer>
+	<app_geetest>
+	<class>EXT:geetest.service.srv.do.App_Geetest_FooterDo</class>
+	<loadway>load</loadway>
+	<method>run</method>
+	</app_geetest>
+	</s_footer>
+
+<c_register>
+	<app_geetest>
+	<class>EXT:geetest.service.App_Geetest_RegInject</class>
+	<loadway></loadway>
+	<method>run</method>
+	</app_geetest>
+	</c_register>
+
+<s_admin_menu>
+	<app_geetest>
+	<class>EXT:geetest.service.srv.App_Geetest_ConfigDo</class>
+	<loadway>load</loadway>
+	<method>getAdminMenu</method>
+	<description>极验验证码admin menu</description>
+	</app_geetest>
+	</s_admin_menu>
+</inject-services>
+</manifest>
